@@ -5,11 +5,26 @@ interface Props {
     data: QuestionData;
 }
 
-export const Question = ({ data }: Props) => (
+interface Props {
+    data: QuestionData;
+    showContent?: boolean;
+}
+
+
+
+export const Question = ({ data, showContent = true }: Props) => (
     <div>
         <div>
             {data.title}
         </div>
+        {showContent && (
+             <div>
+             {data.content.length > 50
+             ? `${data.content.substring(0, 50)}...`
+             : data.content}
+         </div>
+        ) }
+       
         <div>
             {`Asked by ${data.userName} on 
             ${data.created.toLocaleDateString()}
@@ -17,3 +32,4 @@ export const Question = ({ data }: Props) => (
         </div>
     </div>
 );
+
