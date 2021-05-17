@@ -1,0 +1,44 @@
+.DS_Store
+
+# dotnet core
+backend/bin/
+backend/obj/
+backend/project.lock.json
+backend/NuGetScratch/
+
+backend/api/wwwroot/**
+backend/!api/wwwroot/scratch.html
+backend/!api/wwwroot/favicon.ico
+
+# node
+frontend/node_modules/
+frontend/typings/
+frontend/npm-debug.log
+frontend/.pnp
+frontend/.pnp.js
+
+# client-react
+frontend/components/*.js
+frontend.test/build
+!frontend.test/build/client-react/styles/
+
+# ops
+ops/hosts
+ops/config.yml
+ops/*.retry
+
+# other
+*.js.map
+
+# IDE
+.idea/
+.vs/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/coverage
