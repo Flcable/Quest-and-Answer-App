@@ -1,13 +1,46 @@
 import React from 'react';
 import { QuestionList } from './QuestionList';
-import { getUnansweredQuestions } from './QuestionData';
+import { getUnansweredQuestions, QuestionData } from './QuestionData';
+import { Page } from './Page';
+import { PageTitle } from './PageTitle';
 
-export const HomePage = () => (
-    <div>
-        <div>
-            <h2>Unanswered Questions</h2>
-            <button>Ask me a question</button>
-        </div>
-        <QuestionList data={getUnansweredQuestions()} />
-    </div>
-);
+export const HomePage = () => { 
+    const [
+        questions,
+        setQuestions,
+    ] = React.useState<QuestionData[]>([]);
+    const [
+        questionsLoading,
+        setQuestionsLoading,
+    ] = React.useState(true);
+
+    React.useEffect(() => {
+        const doGetUnansweredQuestions = async () => {
+            const unansweredQuestions = await 
+            getUnansweredQuestions();
+            setQuestions(unansweredQuestions);
+            setQuestionsLoading(false);
+
+        };
+        doGetUnansweredQuestions();        
+    }, []);
+
+    const handleAskQuestionClick = () => {
+        console.log('TODO - move to the AskPage');
+    }
+   
+    return (
+        <Page>
+            <div>
+                <PageTitle>Unanswered Questions</PageTitle>
+                <button onClick={handleAskQuestionClick}>Ask me a question</button>
+            </div>
+            {questionsLoading ? (
+                <div>Loading...</div>
+            ) : (
+                <QuestionList data={questions || []} />
+            )}
+            { /* <QuestionList data={getUnansweredQuestions()} 
+            renderItem={(question) => <div>{question.title}</div>} /> */}
+        </Page>
+    ) };
