@@ -6,6 +6,7 @@ import { HomePage } from './HomePage';
 import { AskPage } from './AskPage';
 import { SearchPage } from './SearchPage';
 import { SignInPage } from './SignInPage';
+import { NotFoundPage } from './NotFoundPage';
 
 import { fontFamily, fontSize, gray2 } from './Styles';
 import React from 'react';
@@ -26,6 +27,7 @@ function App() {
           <Route path="search" element={<SearchPage/>} />
           <Route path="ask" element={<AskPage/>} />
           <Route path="signin" element={<SignInPage/>} />
+          <Route path="*" element={<NotFoundPage/>} />
         </Routes>
         <HomePage />
       </div>
