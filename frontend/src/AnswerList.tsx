@@ -5,7 +5,6 @@ import { AnswerData } from './QuestionsData';
 import { Answer } from './Answer';
 import { gray5 } from './Styles';
 
-
 interface Props {
   data: AnswerData[];
 }
